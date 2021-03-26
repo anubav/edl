@@ -1,0 +1,17 @@
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Log files for training sessions
+logs/
+
+.vscode/*
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+.vscode/settings.json
+
