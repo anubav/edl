@@ -1,4 +1,4 @@
-import mnist
+import tensorflow as tf
 import numpy as np 
 
 def rescale_image(unscaled_image):
@@ -15,13 +15,9 @@ def digit_to_target(digit):
     target[digit] = 1
     target = target.reshape(1, -1)
     return target
-    
 
 # mnist dataset
-mnist_training_images = mnist.train_images()
-mnist_testing_images = mnist.test_images()
-training_labels = mnist.train_labels()
-testing_labels = mnist.test_labels()
+(mnist_training_images, training_labels), (mnist_testing_images, testing_labels) = tf.keras.datasets.mnist.load_data()
 
 # training images and testing images
 training_images = [rescale_image(image) for image in mnist_training_images]
@@ -34,4 +30,3 @@ training_targets = [digit_to_target(digit) for digit in training_labels]
 training_targets = np.array(training_targets)
 testing_targets = [digit_to_target(digit) for digit in testing_labels]
 testing_targets = np.array(testing_targets) 
-
