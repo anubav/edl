@@ -1,4 +1,4 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/anubav/epistemology_of_deep_learning.git/master?urlpath=lab/tree/notebooks%2F00_introduction.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/anubav/edl.git/master?urlpath=lab/tree/notebooks%2F00_introduction.ipynb)
 
 # Epistemology of Deep Learning
 **Course Information**: TBA
