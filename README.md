@@ -18,7 +18,7 @@ The following instructions assume that (1) you are using a Linux command-line en
 1. Clone the git repository into a directory of your choosing:
 ```sh
 cd [repo-directory]
-git clone https://github.com/anubav/epistemology_of_deep_learning.git
+git clone https://github.com/anubav/edl.git
 cd epistemology_of_deep_learning
 ```
 
