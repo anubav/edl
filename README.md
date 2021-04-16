@@ -1,5 +1,4 @@
 # Epistemology of Deep Learning
-**Course Information**: TBA
 
 **Instructors**: [Anubav Vasudevan](mailto:anubav@uchicago.com?subject=Epistemology%20of%20Deep%20Learning) and [Malte Willer](mailto:willer@uchicago.com?subject=Epistemology%20of%20Deep%20Learning)
 
