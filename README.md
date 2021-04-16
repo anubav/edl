@@ -19,7 +19,7 @@ The following instructions assume that (1) you are using a Linux command-line en
 ```sh
 cd [repo-directory]
 git clone https://github.com/anubav/edl.git
-cd epistemology_of_deep_learning
+cd edl
 ```
 
 2. Create and activate the virtual environment:
