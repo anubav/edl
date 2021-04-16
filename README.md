@@ -1,5 +1,3 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/anubav/edl.git/master?urlpath=lab/tree/notebooks%2F00_introduction.ipynb)
-
 # Epistemology of Deep Learning
 **Course Information**: TBA
 
@@ -13,10 +11,6 @@ Philosophers have long drawn inspiration for their views about the nature of hum
 In this course, we will undertake a critical examination of some of the bold epistemological claims that have been made on behalf of deep neural networks. To what extent can deep learning be represented within the framework of existing theories of statistical and causal inference, and to what extent does it represent a new epistemological paradigm? Are deep neural networks genuinely theory-neutral, as it is sometimes claimed, or does the underlying architecture of these systems encode substantive theoretical assumptions and biases? Without the aid of a background theory or statistical model, how can we, the users of a deep neural network, be in a position to trust the reliability of its predictions? In principle, are there any cognitive tasks with respect to which deep neural networks are incapable of outperforming human expertise? Do recent developments in artificial intelligence shed any new light on traditional philosophical questions about the capacity of machines to act intelligently, or the computational and mechanistic bases of human cognition? 
 
 ## Instructions for Accessing the Course Files
-
-### Binder
-
-The most straightforward way to access the course material is to simply click the following badge: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/anubav/epistemology_of_deep_learning.git/master?urlpath=lab/tree/notebooks%2F00_introduction.ipynb). This will take you to a Binder (or Binder-ready repository) containing all of the course notes, and will automatically load all of the dependencies that you need to run the code yourself. (Binders provide an ephemeral cloud-based environment for interactive coding. While you should feel free to experiment with the code appearing in the course notes in your Binder, please be aware that any changes that you make cannot be saved and will not persist once your session ends. If you would like your own personal copy of the notes, please follow the Manual Download instructions below).   
 
 ### Manual Download and Local Installation of Dependencies
 
