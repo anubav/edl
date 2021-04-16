@@ -13,7 +13,7 @@ In this course, we will undertake a critical examination of some of the bold epi
 
 ### Manual Download and Local Installation of Dependencies
 
-The following instructions assume that (1) you are using a Linux command-line environment to interface with your computer (on macOS you can access a command line via the [terminal app](https://support.apple.com/guide/terminal/welcome/mac). On windows, you can either install the [Window Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) or use [Anaconda Prompt](https://problemsolvingwithpython.com/01-Orientation/01.03-Installing-Anaconda-on-Windows/)); (2) you have installed [git](https://git-scm.com/), [conda](https://docs.conda.io/en/latest/), and [Python 3.6+](https://www.python.org/) and have command-line access to the relevant commands; and (3) you have installed [Jupyter-lab](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html). 
+The following instructions assume that (1) you are using a Linux command-line environment to interface with your computer (on macOS you can access a command line via the [terminal app](https://support.apple.com/guide/terminal/welcome/mac). On windows, you can either install the [Window Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) or use [Anaconda Prompt](https://problemsolvingwithpython.com/01-Orientation/01.03-Installing-Anaconda-on-Windows/)); and (2) you have installed [git](https://git-scm.com/), [conda](https://docs.conda.io/en/latest/), and [Python 3.6+](https://www.python.org/) and have command-line access to the relevant commands:
 
 1. Clone the git repository into a directory of your choosing:
 ```sh
