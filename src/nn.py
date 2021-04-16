@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 from .activations import IDENTITY
 
 
@@ -9,16 +8,7 @@ class Dataset:
     def __init__(self, inputs, targets) -> None:
         self.inputs = inputs
         self.targets = targets
-        self.statistics = {}
-
-    def add_statistic(self, stat_name, stat) -> None:
-        """Add a statistic to include in the analysis"""
-        self.statistics[stat_name] = stat
-
-    def analyze_datum(self, outputs, targets, record) -> None:
-        for stat_name, stat in self.statistics.items():
-            value = stat(outputs, targets, record)
-            record[stat_name].append(value)
+        self.size = len(inputs)
 
 
 class Layer:
@@ -45,14 +35,14 @@ class Layer:
 
 
 class Network:
-    """A feed-forward neural network (or multi-layer perceptron)"""
+    """A feed-forward neural network"""
 
     def __init__(self, layers) -> None:
         self.layers = layers
         self.depth = len(layers)
         self.width = [layer.width for layer in layers]
         self.weights = [None for i in range(self.depth)]
-        self.training_record = None
+        self.training_record = []
 
     def propagate(self, inputs) -> None:
         """
@@ -74,44 +64,37 @@ class Network:
                 layer.inputs, D=True) * np.dot(deltas, self.weights[i].T)
             deltas = layer.deltas
 
-    def update_weights(self, inputs, targets, learning_rate) -> None:
+    def update_network(self, inputs, targets, learning_rate) -> None:
         """Update network weights using the method of gradient descent"""
         self.propagate(inputs)
         self.back_propagate(targets)
         for i in range(self.depth - 1):
-            self.weights[i] -= learning_rate * \
-                (np.dot(self.layers[i].outputs.T, self.layers[i + 1].deltas))
+            self.weights[i] -= learning_rate * (np.dot(self.layers[i].outputs.T, self.layers[i + 1].deltas))
 
-    def __call__(self, dataset, train=False, initialize=1, learning_rate=1):
+    def __call__(self, dataset, train=False, initialize=False, seed=1, learning_rate=1, stats={}):
         """Analyze dataset using the network or train network on dataset."""
-        if isinstance(dataset, np.ndarray):
+        if isinstance(dataset, np.ndarray):  # Process single datum
             datum = dataset
             self.propagate(datum)
-            outputs = pd.DataFrame(self.layers[-1].outputs.flatten())
-            outputs.columns = ['Output']
-            return outputs
-        elif isinstance(dataset, Dataset):
-            record = {}
-            for stat_name in dataset.statistics.keys():
-                record[stat_name] = []
-            data_generator = (
-                (dataset.inputs[i], dataset.targets[i])
-                for i in range(len(dataset.inputs)))
-            if train:
+            return self.layers[-1].outputs.flatten()
+        elif isinstance(dataset, Dataset):  # Process entire dataset
+            record = {}  # Create a new training record
+            for stat_name in stats.keys():
+                record[stat_name] = []  # Initialize training record
+            if initialize:
+                self.training_record = []  # Reset training record
                 for i in range(self.depth - 1):
-                    self.weights[i] = (
-                        2 * initialize) * np.random.rand(self.width[i],
-                                                         self.width[i + 1])
-                    - initialize
-                self.weights[self.depth -
-                             1] = np.identity(self.layers[-1].width)
-            for inputs, targets in data_generator:
+                    self.weights[i] = (2 * seed) * np.random.rand(self.width[i], self.width[i + 1]) - seed
+                self.weights[self.depth - 1] = np.identity(self.layers[-1].width)
+            for inputs, targets in zip(dataset.inputs, dataset.targets):
                 if train:
-                    self.update_weights(inputs, targets, learning_rate)
+                    self.update_network(inputs, targets, learning_rate)
                 else:
                     self.propagate(inputs)
-                outputs = self.layers[-1].outputs
-                dataset.analyze_datum(outputs, targets, record)
-            return pd.DataFrame.from_dict(record)
+                for stat_name, stat in stats.items():  # Update training record
+                    value = stat(self, targets)
+                    record[stat_name].append(value)
+            # Store the record
+            self.training_record.append(record)
         else:
             raise ValueError('Input is a neither a datapoint nor a dataset.')
